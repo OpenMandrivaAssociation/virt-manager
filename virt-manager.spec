@@ -13,6 +13,7 @@ Source:     http://virt-manager.et.redhat.com/download/sources/virt-manager/virt
 BuildRequires:  python
 BuildRequires:  pygtk2.0-devel
 BuildRequires:  desktop-file-utils
+BuildRequires:  scrollkeeper
 Requires:       python-libvirt
 Requires:       python-virtinst
 Requires:       python-vte
