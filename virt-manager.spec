@@ -1,6 +1,6 @@
 %define	name	virt-manager
 %define	version	0.4.0
-%define	release	%mkrel 1
+%define	release	%mkrel 2
 
 Name:		%{name}
 Version:	%{version}
@@ -17,12 +17,12 @@ BuildRequires:  scrollkeeper
 Requires:       python-libvirt
 Requires:       python-virtinst
 Requires:       python-vte
-Requires:	dbus-python
-Requires:	pygtk2.0-libglade
-Requires:	gnome-python-gconf
-Requires:	gnome-python-gnomevfs
-Requires:	libxml2-python
-Requires:	librsvg
+Requires:	    python-libxml2
+Requires:	    dbus-python
+Requires:	    pygtk2.0-libglade
+Requires:	    gnome-python-gconf
+Requires:	    gnome-python-gnomevfs
+Requires:	    librsvg
 Requires(post): GConf2
 Requires(preun):GConf2
 BuildRoot:           %{_tmppath}/%{name}-%{version}
