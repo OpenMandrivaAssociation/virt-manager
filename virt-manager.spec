@@ -82,3 +82,4 @@ rm -rf %{buildroot}
 %{_sysconfdir}/gconf/schemas/*
 %{_datadir}/gnome/help/virt-manager/
 %{_datadir}/omf/virt-manager/
+%{_mandir}/man1/*
