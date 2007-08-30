@@ -1,6 +1,6 @@
 %define	name	virt-manager
-%define	version	0.4.0
-%define	release	%mkrel 3
+%define	version	0.5.0
+%define	release	%mkrel 1
 
 Name:		%{name}
 Version:	%{version}
@@ -8,8 +8,8 @@ Release:	%{release}
 Summary:    Virtual Machine Manager
 License:    GPL
 Group:      Graphical desktop/GNOME
-URL:        http://virt-manager.et.redhat.com/
-Source:     http://virt-manager.et.redhat.com/download/sources/virt-manager/virt-manager-%{version}.tar.gz
+URL:        http://virt-manager.org/
+Source:     http://virt-manager.org/download/sources/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:  python
 BuildRequires:  pygtk2.0-devel
 BuildRequires:  desktop-file-utils
@@ -50,8 +50,7 @@ rm -rf %{buildroot}
 
 # menu entry
 desktop-file-install --vendor="" \
-    --add-category="GTK" \
-    --remove-category="Application" \
+    --add-category="GTK;GNOME;Emulator" \
     --dir %{buildroot}%{_datadir}/applications \
     %{buildroot}%{_datadir}/applications/virt-manager.desktop
 
@@ -83,4 +82,3 @@ rm -rf %{buildroot}
 %{_sysconfdir}/gconf/schemas/*
 %{_datadir}/gnome/help/virt-manager/
 %{_datadir}/omf/virt-manager/
-
