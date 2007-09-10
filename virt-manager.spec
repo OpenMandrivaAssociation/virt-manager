@@ -1,6 +1,6 @@
 %define	name	virt-manager
 %define	version	0.5.0
-%define	release	%mkrel 1
+%define	release	%mkrel 2
 
 Name:		%{name}
 Version:	%{version}
@@ -18,6 +18,7 @@ Requires:       python-libvirt
 Requires:       python-virtinst
 Requires:       python-vte
 Requires:	    python-libxml2
+Requires:	    python-gtk-vnc
 Requires:	    dbus-python
 Requires:	    pygtk2.0-libglade
 Requires:	    gnome-python-gconf
