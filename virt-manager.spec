@@ -1,6 +1,6 @@
 %define	name	virt-manager
 %define	version	0.5.0
-%define	release	%mkrel 2
+%define	release	%mkrel 3
 
 Name:		%{name}
 Version:	%{version}
@@ -24,6 +24,7 @@ Requires:	    pygtk2.0-libglade
 Requires:	    gnome-python-gconf
 Requires:	    gnome-python-gnomevfs
 Requires:	    librsvg
+Requires:	    libvirt-utils
 Requires(post): GConf2
 Requires(preun):GConf2
 BuildRoot:           %{_tmppath}/%{name}-%{version}
