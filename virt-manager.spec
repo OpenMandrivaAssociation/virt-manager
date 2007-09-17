@@ -1,6 +1,6 @@
 %define	name	virt-manager
 %define	version	0.5.0
-%define	release	%mkrel 3
+%define	release	%mkrel 4
 
 Name:		%{name}
 Version:	%{version}
@@ -15,7 +15,7 @@ BuildRequires:  pygtk2.0-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  scrollkeeper
 Requires:       python-libvirt
-Requires:       python-virtinst
+Requires:       python-virtinst >= 0.300.0
 Requires:       python-vte
 Requires:	    python-libxml2
 Requires:	    python-gtk-vnc
