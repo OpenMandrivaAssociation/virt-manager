@@ -1,6 +1,6 @@
 %define	name	virt-manager
 %define	version	0.5.0
-%define	release	%mkrel 4
+%define	release	%mkrel 5
 
 Name:		%{name}
 Version:	%{version}
@@ -10,6 +10,7 @@ License:    GPL
 Group:      Graphical desktop/GNOME
 URL:        http://virt-manager.org/
 Source:     http://virt-manager.org/download/sources/%{name}/%{name}-%{version}.tar.gz
+Patch:      virt-manager-0.5.0.keyboard.patch
 BuildRequires:  python
 BuildRequires:  pygtk2.0-devel
 BuildRequires:  desktop-file-utils
@@ -41,6 +42,7 @@ domain.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure
