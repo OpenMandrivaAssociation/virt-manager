@@ -1,6 +1,6 @@
 %define	name	virt-manager
-%define	version	0.5.0
-%define	release	%mkrel 5
+%define	version	0.5.2
+%define	release	%mkrel 1
 
 Name:		%{name}
 Version:	%{version}
@@ -22,6 +22,7 @@ Requires:	    python-libxml2
 Requires:	    python-gtk-vnc
 Requires:	    dbus-python
 Requires:	    pygtk2.0-libglade
+Requires:	    gnome-python
 Requires:	    gnome-python-gconf
 Requires:	    gnome-python-gnomevfs
 Requires:	    librsvg
@@ -45,7 +46,7 @@ domain.
 %patch0 -p1
 
 %build
-%configure
+%configure2_5x
 %make
 
 %install
