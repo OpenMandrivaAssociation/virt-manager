@@ -29,6 +29,7 @@ Requires:	    librsvg
 Requires:	    libvirt-utils
 Requires(post): GConf2
 Requires(preun):GConf2
+BuildRoot:           %{_tmppath}/%{name}-%{version}
 
 %description
 The "Virtual Machine Manager" (virt-manager for short package name) is a
