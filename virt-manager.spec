@@ -65,15 +65,19 @@ desktop-file-install --vendor="" \
 rm -rf %{buildroot}
 
 
+%if %mdkversion < 200900
 %post
 %post_install_gconf_schemas virt-manager
 %{update_menus}
+%endif
 
 %preun
 %preun_uninstall_gconf_schemas virt-manager
 
+%if %mdkversion < 200900
 %postun
 %{clean_menus}
+%endif
 
 %files -f %{name}.lang
 %defattr(-,root,root)
