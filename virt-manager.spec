@@ -1,6 +1,6 @@
 %define	name	virt-manager
 %define	version	0.7.0
-%define	release	%mkrel 1
+%define	release	%mkrel 2
 
 Name:		%{name}
 Version:	%{version}
@@ -10,6 +10,9 @@ License:    GPLv2+
 Group:      Graphical desktop/GNOME
 URL:        http://virt-manager.org/
 Source:     http://virt-manager.org/download/sources/%{name}/%{name}-%{version}.tar.gz
+# Upstream patches, via Fedora
+Patch1: %{name}-%{version}-old-xen-compat.patch
+Patch2: %{name}-%{version}-vm-migrate-list.patch
 BuildRequires:  python
 BuildRequires:  pygtk2.0-devel
 BuildRequires:  desktop-file-utils
@@ -42,6 +45,8 @@ domain.
 
 %prep
 %setup -q
+%patch1 -p1
+%patch2 -p1
 
 %build
 %configure2_5x
