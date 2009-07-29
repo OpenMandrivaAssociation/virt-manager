@@ -14,6 +14,7 @@ BuildRequires:  python
 BuildRequires:  pygtk2.0-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  scrollkeeper
+BuildRequires:	intltool
 Requires:       python-libvirt
 Requires:       python-virtinst >= 0.300.0
 Requires:       python-vte
