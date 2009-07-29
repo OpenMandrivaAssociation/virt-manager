@@ -1,6 +1,6 @@
 %define	name	virt-manager
-%define	version	0.7.0
-%define	release	%mkrel 3
+%define	version	0.8.0
+%define	release	%mkrel 1
 
 Name:		%{name}
 Version:	%{version}
@@ -10,18 +10,6 @@ License:    GPLv2+
 Group:      Graphical desktop/GNOME
 URL:        http://virt-manager.org/
 Source:     http://virt-manager.org/download/sources/%{name}/%{name}-%{version}.tar.gz
-# Upstream patches, via Fedora
-Patch1: %{name}-%{version}-old-xen-compat.patch
-Patch2: %{name}-%{version}-vm-migrate-list.patch
-Patch3: %{name}-%{version}-fix-button-ordering.patch
-Patch4: %{name}-%{version}-fix-vcpu-cap.patch
-Patch5: %{name}-%{version}-delete-dup-conn.patch
-Patch6: %{name}-%{version}-update-translations.patch
-# Upstream patches, via Debian
-Patch101:	0001-use-usr-share-gconf-for-schema-data.patch
-Patch102:	0002-close-nc-connection-on-EOF.patch
-Patch103:	0003-don-t-crop-vnc-display.patch
-Patch104:	0004-make-check-match-return-value-of-self.get_config_key.patch
 BuildRequires:  python
 BuildRequires:  pygtk2.0-devel
 BuildRequires:  desktop-file-utils
@@ -54,16 +42,6 @@ domain.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch101 -p1
-%patch102 -p1
-%patch103 -p1
-%patch104 -p1
 
 %build
 %configure2_5x
@@ -103,7 +81,6 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
 %{_bindir}/*
-%{_libdir}/virt-manager
 %{_libdir}/virt-manager-launch
 %{_datadir}/virt-manager
 %{_datadir}/applications/virt-manager.desktop
