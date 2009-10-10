@@ -1,6 +1,6 @@
 %define	name	virt-manager
 %define	version	0.8.0
-%define	release	%mkrel 2
+%define	release	%mkrel 3
 
 Name:		%{name}
 Version:	%{version}
@@ -32,6 +32,7 @@ Patch8: %{name}-%{version}-stats-logging.patch
 # Refresh host disk space in create wizard (RH bug #502777)
 Patch9: %{name}-%{version}-refresh-disk-space.patch
 # Offer to fix disk permission issues (RH bug #517379)
+# Disabled because it breaks VM creation if qemu user does not exist
 Patch10: %{name}-%{version}-fix-path-perms.patch
 # Fix VCPU hotplug
 Patch11: %{name}-%{version}-fix-vcpu-hotplug.patch
@@ -94,7 +95,7 @@ cp %{SOURCE3} pixmaps
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
-%patch10 -p1
+#%patch10 -p1
 %patch11 -p1
 %patch12 -p1
 %patch13 -p1
