@@ -1,5 +1,5 @@
 %define	name	virt-manager
-%define	version	0.8.3
+%define	version	0.8.4
 %define	release	%mkrel 1
 
 Name:		%{name}
