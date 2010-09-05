@@ -1,5 +1,5 @@
 %define	name	virt-manager
-%define	version	0.8.4
+%define	version	0.8.5
 %define	release	%mkrel 1
 
 Name:		%{name}
@@ -95,6 +95,4 @@ rm -rf %{buildroot}
 %{_datadir}/applications/virt-manager.desktop
 %{_datadir}/dbus-1/services/virt-manager.service
 %{_sysconfdir}/gconf/schemas/*
-%{_datadir}/gnome/help/virt-manager/
-%{_datadir}/omf/virt-manager/
 %{_mandir}/man1/*
