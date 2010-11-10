@@ -1,6 +1,6 @@
 %define	name	virt-manager
 %define	version	0.8.5
-%define	release	%mkrel 1
+%define	release	%mkrel 2
 
 Name:		%{name}
 Version:	%{version}
@@ -14,6 +14,7 @@ Source1: state_paused.png
 Source2: state_running.png
 Source3: state_shutoff.png
 Patch1:     virt-manager-0.8.2-perms-qemu-user.patch
+Patch2:     virt-manager-0.8.5-python2.7.patch
 BuildRequires:  python
 BuildRequires:  pygtk2.0-devel
 BuildRequires:  desktop-file-utils
@@ -51,6 +52,7 @@ cp %{SOURCE1} pixmaps
 cp %{SOURCE2} pixmaps
 cp %{SOURCE3} pixmaps
 %patch1 -p1
+%patch2 -p1 -b python2.7
 
 %build
 %configure2_5x
