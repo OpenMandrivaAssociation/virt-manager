@@ -19,7 +19,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  scrollkeeper
 BuildRequires:	intltool
 Requires:       python-libvirt
-Requires:       python-virtinst >= 0.300.0
+Requires:       python-virtinst > 0.500.5
 Requires:       python-vte
 Requires:	    python-libxml2
 Requires:	    python-gtk-vnc
