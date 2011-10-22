@@ -92,6 +92,6 @@ rm -rf %{buildroot}
 %{_datadir}/virt-manager
 %{_datadir}/applications/virt-manager.desktop
 %{_datadir}/dbus-1/services/virt-manager.service
-%{_datadir}/icons/hicolor/*/%{name}.png
+%{_datadir}/icons/hicolor/{"16x16","22x22","24x24","48x48","32x32","256x256"}/%{name}.png
 %{_sysconfdir}/gconf/schemas/*
 %{_mandir}/man1/*
