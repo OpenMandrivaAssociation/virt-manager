@@ -92,7 +92,7 @@ rm -rf %{buildroot}
 %{_datadir}/virt-manager
 %{_datadir}/applications/virt-manager.desktop
 %{_datadir}/dbus-1/services/virt-manager.service
-%{_datadir}/icons/hicolor/16x16%{name}.png
+%{_datadir}/icons/hicolor/16x16/%{name}.png
 %{_datadir}/icons/hicolor/22x22/%{name}.png
 %{_datadir}/icons/hicolor/24x24/%{name}.png
 %{_datadir}/icons/hicolor/32x32/%{name}.png
