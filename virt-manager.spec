@@ -1,6 +1,6 @@
 %define	name	virt-manager
-%define	version	0.9.0
-%define	release	%mkrel 1
+%define	version	0.9.3
+%define	release	1
 
 Name:		%{name}
 Version:	%{version}
@@ -9,7 +9,7 @@ Summary:    Virtual Machine Manager
 License:    GPLv2+
 Group:      Graphical desktop/GNOME
 URL:        http://virt-manager.org/
-Source:     http://virt-manager.org/download/sources/%{name}/%{name}-%{version}.tar.gz
+Source0:    http://virt-manager.org/download/sources/%{name}/%{name}-%{version}.tar.gz
 Source1: state_paused.png
 Source2: state_running.png
 Source3: state_shutoff.png
@@ -32,7 +32,6 @@ Requires:	    librsvg
 Requires:	    libvirt-utils
 Requires(post): GConf2
 Requires(preun):GConf2
-BuildRoot:           %{_tmppath}/%{name}-%{version}
 
 %description
 The "Virtual Machine Manager" (virt-manager for short package name) is a
@@ -66,26 +65,7 @@ desktop-file-install --vendor="" \
 
 %find_lang %{name}
 
-%clean
-rm -rf %{buildroot}
-
-
-%if %mdkversion < 200900
-%post
-%post_install_gconf_schemas virt-manager
-%{update_menus}
-%endif
-
-%preun
-%preun_uninstall_gconf_schemas virt-manager
-
-%if %mdkversion < 200900
-%postun
-%{clean_menus}
-%endif
-
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
 %{_bindir}/*
 %{_libdir}/virt-manager-launch
