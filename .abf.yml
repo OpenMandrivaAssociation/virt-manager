@@ -1,0 +1,5 @@
+sources:
+  "state_paused.png:"	a29a15b5aa2410eeb2d753f0477cb832cba222bb
+  "state_running.png:"	b8fcfefdbf650420e7a4d01b6a86b0a1601e10f4
+  "state_shutoff.png:"	ce12a39cb7d2b95f0269c2a456e56925b2aeba41
+  "virt-manager-0.9.3.tar.gz:"	793c596f9336b34950106013962416b16f9ec6d7
