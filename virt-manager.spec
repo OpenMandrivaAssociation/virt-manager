@@ -1,5 +1,3 @@
-%define _requires_exceptions typelib\(AppIndicator3\)
-
 Name:		virt-manager
 Version:	0.10.0
 Release:	1
