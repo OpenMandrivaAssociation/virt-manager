@@ -10,7 +10,6 @@ Patch0:		virt-manager-0.10.0-mbs.diff
 BuildRequires:	python
 BuildRequires:	intltool
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:	
 BuildArch: noarch
 Requires:	python-libvirt
 Requires:	python-libxml2
