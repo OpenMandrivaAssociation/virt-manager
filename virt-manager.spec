@@ -55,6 +55,7 @@ python setup.py install --root=%{buildroot}
 %{_bindir}/*
 %{_datadir}/glib-2.0/schemas/*.xml
 %{_datadir}/applications/*.desktop
+%{_datadir}/appdata/virt-manager.appdata.xml
 %{_mandir}/man*/*
 %{_iconsdir}/*/*/*/*
 %{_datadir}/%{name}
