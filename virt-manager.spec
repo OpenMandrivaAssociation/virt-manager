@@ -35,14 +35,13 @@ domain.
 
 %prep
 %setup -q
-%patch0 -p0
 
 %build
 python setup.py configure --prefix=%{_prefix} \
 	--libvirt-package-names="libvirt-utils" \
 	--kvm-package-names="qemu" \
 	--askpass-package-names="openssh-askpass" \
-	--hide-unsupported-rhel-options \
+	--stable-defaults \
 	--preferred-distros="OpenMandriva"
 python setup.py build
 
