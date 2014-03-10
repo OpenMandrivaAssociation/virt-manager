@@ -1,12 +1,11 @@
 Name:		virt-manager
-Version:	0.10.0
-Release:	6
+Version:	1.0.0
+Release:	1
 Summary:	Virtual Machine Manager
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 URL:		http://virt-manager.org/
 Source0:	http://virt-manager.org/download/sources/%{name}/%{name}-%{version}.tar.gz
-Patch0:		virt-manager-0.10.0-mbs.diff
 BuildRequires:	python
 BuildRequires:	intltool
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
