@@ -1,5 +1,5 @@
 Name:		virt-manager
-Version:	1.0.1
+Version:	1.1.0
 Release:	1
 Summary:	Virtual Machine Manager
 License:	GPLv2+
@@ -10,16 +10,16 @@ BuildRequires:	python
 BuildRequires:	intltool
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildArch: noarch
-Requires:	python-libvirt
-Requires:	python-libxml2
+Requires:	python2-libvirt
+Requires:	python2-libxml2
 Requires:	python-urlgrabber
-Requires:	python-gi
+Requires:	python2-gi
 Requires:	libvirt-glib
 Requires:	python-ipaddr
 Requires:	typelib(Gtk) = 3.0
 Requires:	typelib(GtkVnc) = 2.0
 Requires:	typelib(SpiceClientGtk) = 3.0
-Requires:	typelib(Vte) = 2.90
+Requires:	typelib(Vte) = 2.91
 Requires:	typelib(LibvirtGLib)
 Obsoletes:	python-virtinst < 0.600.5
 
@@ -37,16 +37,16 @@ domain.
 %setup -q
 
 %build
-python setup.py configure --prefix=%{_prefix} \
+./setup.py configure --prefix=%{_prefix} \
 	--libvirt-package-names="libvirt-utils" \
 	--kvm-package-names="qemu" \
 	--askpass-package-names="openssh-askpass" \
 	--stable-defaults \
 	--preferred-distros="OpenMandriva"
-python setup.py build
+./setup.py build
 
 %install
-python setup.py install --root=%{buildroot}
+./setup.py install --root=%{buildroot}
 
 %find_lang %{name}
 
