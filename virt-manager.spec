@@ -1,6 +1,6 @@
 Name:		virt-manager
-Version:	1.1.0
-Release:	2
+Version:	1.2.0
+Release:	1
 Summary:	Virtual Machine Manager
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
