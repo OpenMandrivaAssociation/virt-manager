@@ -56,6 +56,7 @@ domain.
 %{_datadir}/glib-2.0/schemas/*.xml
 %{_datadir}/applications/*.desktop
 %{_datadir}/appdata/virt-manager.appdata.xml
+%{_datadir}/GConf/gsettings/org.virt-manager.virt-manager.convert
 %{_mandir}/man*/*
 %{_iconsdir}/*/*/*/*
 %{_datadir}/%{name}
