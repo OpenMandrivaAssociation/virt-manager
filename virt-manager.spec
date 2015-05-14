@@ -1,6 +1,6 @@
 Name:		virt-manager
-Version:	1.1.0
-Release:	1
+Version:	1.2.0
+Release:	0.1
 Summary:	Virtual Machine Manager
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -10,10 +10,10 @@ BuildRequires:	python
 BuildRequires:	intltool
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildArch: noarch
-Requires:	python2-libvirt
-Requires:	python2-libxml2
+Requires:	python-libvirt
+Requires:	python-libxml2
 Requires:	python-urlgrabber
-Requires:	python2-gi
+Requires:	python-gi
 Requires:	libvirt-glib
 Requires:	python-ipaddr
 Requires:	typelib(Gtk) = 3.0
@@ -56,6 +56,7 @@ domain.
 %{_datadir}/glib-2.0/schemas/*.xml
 %{_datadir}/applications/*.desktop
 %{_datadir}/appdata/virt-manager.appdata.xml
+%{_datadir}/GConf/gsettings/org.virt-manager.virt-manager.convert
 %{_mandir}/man*/*
 %{_iconsdir}/*/*/*/*
 %{_datadir}/%{name}
