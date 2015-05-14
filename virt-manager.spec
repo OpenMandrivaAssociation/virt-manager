@@ -1,6 +1,6 @@
 Name:		virt-manager
 Version:	1.2.0
-Release:	0.1
+Release:	0.2
 Summary:	Virtual Machine Manager
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -21,6 +21,7 @@ Requires:	typelib(GtkVnc) = 2.0
 Requires:	typelib(SpiceClientGtk) = 3.0
 Requires:	typelib(Vte) = 2.90
 Requires:	typelib(LibvirtGLib)
+Requires:	typelib(Libosinfo)
 Obsoletes:	python-virtinst < 0.600.5
 
 %description
