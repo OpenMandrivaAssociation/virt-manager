@@ -19,7 +19,7 @@ Requires:	python-ipaddr
 Requires:	typelib(Gtk) = 3.0
 Requires:	typelib(GtkVnc) = 2.0
 Requires:	typelib(SpiceClientGtk) = 3.0
-Requires:	typelib(Vte) = 2.91
+Requires:	typelib(Vte) = 2.90
 Requires:	typelib(LibvirtGLib)
 Obsoletes:	python-virtinst < 0.600.5
 
