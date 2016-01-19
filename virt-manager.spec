@@ -46,7 +46,7 @@ domain.
 ./setup.py build
 
 %install
-./setup.py install --root=%{buildroot} --no-update-icon-cache
+./setup.py --no-update-icon-cache install --root=%{buildroot}
 
 %find_lang %{name}
 
