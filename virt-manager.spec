@@ -1,5 +1,5 @@
 Name:		virt-manager
-Version:	1.3.2
+Version:	1.4.0
 Release:	1
 Summary:	Virtual Machine Manager
 License:	GPLv2+
