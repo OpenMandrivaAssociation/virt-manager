@@ -16,6 +16,7 @@ Requires:	python-urlgrabber
 Requires:	python2-gi
 Requires:	libvirt-glib
 Requires:	python2-ipaddr
+Requires:	python2-requests
 Requires:	typelib(Gtk) = 3.0
 Requires:	typelib(GtkVnc) = 2.0
 Requires:	typelib(SpiceClientGtk) = 3.0
