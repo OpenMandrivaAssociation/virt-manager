@@ -1,5 +1,5 @@
 Name:		virt-manager
-Version:	1.4.0
+Version:	1.4.1
 Release:	1
 Summary:	Virtual Machine Manager
 License:	GPLv2+
@@ -37,23 +37,23 @@ domain.
 %setup -q
 
 %build
-./setup.py configure --prefix=%{_prefix} \
+%{__python2} ./setup.py configure --prefix=%{_prefix} \
 	--libvirt-package-names="libvirt-utils" \
 	--kvm-package-names="qemu" \
 	--askpass-package-names="openssh-askpass" \
 	--stable-defaults \
 	--preferred-distros="OpenMandriva"
-./setup.py build
+%{__python2} ./setup.py build
 
 %install
-./setup.py \
+%{__python2} ./setup.py \
 	--no-update-icon-cache --no-compile-schemas \
 	 install --root=%{buildroot}
 
 %find_lang %{name}
 
 %files -f %{name}.lang
-%doc COPYING INSTALL NEWS README
+%doc COPYING
 %{_bindir}/*
 %{_datadir}/glib-2.0/schemas/*.xml
 %{_datadir}/applications/*.desktop
