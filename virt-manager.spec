@@ -1,66 +1,140 @@
-Name:		virt-manager
-Version:	1.4.1
-Release:	3
-Summary:	Virtual Machine Manager
-License:	GPLv2+
-Group:		Graphical desktop/GNOME
-URL:		http://virt-manager.org/
-Source0:	http://virt-manager.org/download/sources/%{name}/%{name}-%{version}.tar.gz
-BuildRequires:	python2
-BuildRequires:	intltool
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
+# Please keep this package in sync with FC
+
+%global __requires_exclude typelib\\\(AppIndicator3\\\)|typelib\\\(Vte\\\) = 2.90
+%define _python_bytecompile_build %nil
+
+# RPM doesn't detect that code in /usr/share is python3, this forces it
+# https://fedoraproject.org/wiki/Changes/Avoid_usr_bin_python_in_RPM_Build#Python_bytecompilation
+%global __python %{__python3}
+
+Name: virt-manager
+Version: 2.0.0
+Release: %mkrel 1
+%global verrel %{version}-%{release}
+Summary: Desktop tool for managing virtual machines via libvirt
+Group: Graphical desktop/GNOME
+License: GPLv2+
 BuildArch: noarch
-Requires:	python2-libvirt
-Requires:	python2-libxml2
-Requires:	python-urlgrabber
-Requires:	python2-gi
-Requires:	libvirt-glib
-Requires:	python2-ipaddr
-Requires:	python2-requests
-Requires:	typelib(Gtk) = 3.0
-Requires:	typelib(GtkVnc) = 2.0
-Requires:	typelib(SpiceClientGtk) = 3.0
-Requires:	typelib(Vte) = 2.91
-Requires:	typelib(LibvirtGLib)
-Requires:	typelib(Libosinfo)
-Obsoletes:	python-virtinst < 0.600.5
+URL: https://virt-manager.org/
+Source0: https://virt-manager.org/download/sources/%{name}/%{name}-%{version}.tar.gz
+Requires: virt-manager-common = %{verrel}
+Requires: python-gobject3
+Requires: python-ipaddr
+Requires: python-libvirt
+Requires: python-requests
+Requires: typelib(Gtk) = 3.0
+Requires: typelib(GtkVnc) = 2.0
+Requires: typelib(SpiceClientGtk) = 3.0
+Requires: spice-gtk
+# virt-manager works fine with either, so pull the latest bits so there's
+# no ambiguity.
+Requires: typelib(Vte) >= 2.91
+Requires: libvirt-utils
+BuildRequires: intltool
+BuildRequires: pkgconfig(python3)
 
 %description
-The "Virtual Machine Manager" (virt-manager for short package name) is a
-desktop application for managing virtual machines. It presents a summary view
-of running domains and their live performance & resource utilization
-statistics. A detailed view presents graphs showing performance & utilization
-over time. Ultimately it will allow creation of new domains, and configuration
-& adjustment of a domain's resource allocation & virtual hardware. Finally an
-embedded VNC client viewer presents a full graphical console to the guest
-domain.
+Virtual Machine Manager provides a graphical tool for administering virtual
+machines for KVM, Xen, and LXC. Start, stop, add or remove virtual devices,
+connect to a graphical or serial console, and see resource usage statistics
+for existing VMs on local or remote machines. Uses libvirt as the backend
+management API.
+
+%package common
+Summary: Common files used by the different Virtual Machine Manager interfaces
+Group:    Emulators
+
+Requires: python-libvirt
+Requires: python-libxml2
+Requires: python-requests
+Requires: python-ipaddr
+# Required for gobject-introspection infrastructure
+Requires: python-gobject3
+# Required for pulling files from iso media with isoinfo
+Requires: genisoimage
+Conflicts: virt-manager < 1.3.2-5
+
+%description common
+Common files used by the different virt-manager interfaces, as well as
+virt-install related tools.
+
+
+%package -n virt-install
+Summary: Utilities for installing virtual machines
+Group:    Emulators
+Requires: virt-manager-common = %{verrel}
+# For 'virsh console'
+Requires: libvirt-utils
+
+Provides: virt-install
+Provides: virt-clone
+Provides: virt-convert
+Provides: virt-xml
+Conflicts: virt-manager < 1.3.2-5
+
+%description -n virt-install
+Package includes several command line utilities, including virt-install
+(build and install new VMs) and virt-clone (clone an existing virtual
+machine).
+
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
-%{__python2} ./setup.py configure --prefix=%{_prefix} \
-	--libvirt-package-names="libvirt-utils" \
-	--kvm-package-names="qemu" \
-	--askpass-package-names="openssh-askpass" \
-	--stable-defaults \
-	--preferred-distros="OpenMandriva"
-%{__python2} ./setup.py build
+./setup.py configure \
+ --default-hvs "qemu,xen,lxc"
+./setup.py build
 
 %install
-%{__python2} ./setup.py \
-	--no-update-icon-cache --no-compile-schemas \
-	 install --root=%{buildroot}
-
+./setup.py \
+    --no-update-icon-cache --no-compile-schemas \
+    install -O1 --root=%{buildroot}
 %find_lang %{name}
 
-%files -f %{name}.lang
-%doc COPYING
-%{_bindir}/*
-%{_datadir}/glib-2.0/schemas/*.xml
-%{_datadir}/applications/*.desktop
-%{_datadir}/appdata/virt-manager.appdata.xml
-%{_datadir}/GConf/gsettings/org.virt-manager.virt-manager.convert
-%{_mandir}/man*/*
-%{_iconsdir}/*/*/*/*
-%{_datadir}/%{name}
+# Replace '#!/usr/bin/env python3' with '#!/usr/bin/python3'
+# The format is ideal for upstream, but not a distro. See:
+# https://fedoraproject.org/wiki/Features/SystemPythonExecutablesUseSystemPython
+for f in $(find %{buildroot} -type f -executable -print); do
+    sed -i "1 s|^#!/usr/bin/env python3|#!%{__python3}|" $f || :
+done
+
+
+%files
+%doc README.md COPYING NEWS.md
+%{_bindir}/%{name}
+%{_mandir}/man1/%{name}.1*
+%{_datadir}/%{name}/ui/*.ui
+%{_datadir}/%{name}/virt-manager
+%{_datadir}/%{name}/virtManager
+
+%{_datadir}/%{name}/icons
+%{_datadir}/icons/hicolor/*/apps/*
+
+%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/glib-2.0/schemas/org.virt-manager.virt-manager.gschema.xml
+
+%files common -f %{name}.lang
+%dir %{_datadir}/%{name}
+
+%{_datadir}/%{name}/virtcli
+%{_datadir}/%{name}/virtconv
+%{_datadir}/%{name}/virtinst
+
+%files -n virt-install
+%{_mandir}/man1/virt-install.1*
+%{_mandir}/man1/virt-clone.1*
+%{_mandir}/man1/virt-convert.1*
+%{_mandir}/man1/virt-xml.1*
+
+%{_datadir}/%{name}/virt-install
+%{_datadir}/%{name}/virt-clone
+%{_datadir}/%{name}/virt-convert
+%{_datadir}/%{name}/virt-xml
+
+%{_bindir}/virt-install
+%{_bindir}/virt-clone
+%{_bindir}/virt-convert
+%{_bindir}/virt-xml
