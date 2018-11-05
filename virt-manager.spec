@@ -32,6 +32,7 @@ Requires: typelib(Vte) >= 2.91
 Requires: libvirt-utils
 BuildRequires: intltool
 BuildRequires: pkgconfig(python3)
+BuildRequires: pkgconfig(glib-2.0)
 
 %description
 Virtual Machine Manager provides a graphical tool for administering virtual
