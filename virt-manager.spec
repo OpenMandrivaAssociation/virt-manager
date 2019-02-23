@@ -135,6 +135,11 @@ done
 %{_datadir}/%{name}/virt-convert
 %{_datadir}/%{name}/virt-xml
 
+%{_datadir}/bash-completion/completions/virt-install
+%{_datadir}/bash-completion/completions/virt-clone
+%{_datadir}/bash-completion/completions/virt-convert
+%{_datadir}/bash-completion/completions/virt-xml
+
 %{_bindir}/virt-install
 %{_bindir}/virt-clone
 %{_bindir}/virt-convert
