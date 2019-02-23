@@ -8,8 +8,8 @@
 %global __python %{__python3}
 
 Name: virt-manager
-Version: 2.0.0
-Release: %mkrel 1
+Version: 2.1.0
+Release: 1
 %global verrel %{version}-%{release}
 Summary: Desktop tool for managing virtual machines via libvirt
 Group: Graphical desktop/GNOME
@@ -81,7 +81,7 @@ machine).
 
 %prep
 %setup -q
-%autopatch -p1
+%apply_patches
 
 %build
 ./setup.py configure \

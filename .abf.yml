@@ -1,3 +1,5 @@
-sources:
+removed_sources:
   virt-manager-1.4.1.tar.gz: e2e2ea9012becae32cb460dfce0a06915ee96934
   virt-manager-2.0.0.tar.gz: a99ff5c18281357cbf136830d7babbd22a91678a
+sources:
+  virt-manager-2.1.0.tar.gz: 6c688e9b73bab04b20a5cada7c716993d8d0a0bc
