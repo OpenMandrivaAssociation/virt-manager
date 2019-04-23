@@ -71,6 +71,7 @@ Group:    Emulators
 Requires: virt-manager-common = %{verrel}
 # For 'virsh console'
 Requires: libvirt-utils
+Requires: %{_lib}osinfo1.0_0
 
 Provides: virt-install
 Provides: virt-clone
