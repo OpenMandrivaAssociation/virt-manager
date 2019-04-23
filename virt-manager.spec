@@ -1,7 +1,6 @@
 # Please keep this package in sync with FC
 
 %global __requires_exclude typelib\\\(AppIndicator3\\\)|typelib\\\(Vte\\\) = 2.90
-%define _python_bytecompile_build %nil
 
 # RPM doesn't detect that code in /usr/share is python3, this forces it
 # https://fedoraproject.org/wiki/Changes/Avoid_usr_bin_python_in_RPM_Build#Python_bytecompilation
@@ -9,7 +8,7 @@
 
 Name: virt-manager
 Version: 2.1.0
-Release: 1
+Release: 2
 %global verrel %{version}-%{release}
 Summary: Desktop tool for managing virtual machines via libvirt
 Group: Graphical desktop/GNOME
@@ -17,6 +16,12 @@ License: GPLv2+
 BuildArch: noarch
 URL: https://virt-manager.org/
 Source0: https://virt-manager.org/download/sources/%{name}/%{name}-%{version}.tar.gz
+
+# Fix --initrd-inject with f30 URLs (bz #1686464)
+Patch0001: 0001-initrdinject-Use-full-option-versions-for-cpio.patch
+Patch0002: 0002-initrdinject-Force-added-files-to-be-owned-as-root-b.patch
+
+
 Requires: virt-manager-common = %{verrel}
 Requires: python-gobject3
 Requires: python-ipaddr
@@ -78,10 +83,14 @@ Package includes several command line utilities, including virt-install
 (build and install new VMs) and virt-clone (clone an existing virtual
 machine).
 
+# Fix --initrd-inject with f30 URLs (bz #1686464)
+%patch0001 -p1
+%patch0002 -p1
+
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 ./setup.py configure \
@@ -100,7 +109,6 @@ machine).
 for f in $(find %{buildroot} -type f -executable -print); do
     sed -i "1 s|^#!/usr/bin/env python3|#!%{__python3}|" $f || :
 done
-
 
 %files
 %doc README.md COPYING NEWS.md
