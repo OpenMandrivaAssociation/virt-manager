@@ -25,6 +25,7 @@ Requires: python-requests
 Requires: typelib(Gtk) = 3.0
 Requires: typelib(GtkVnc) = 2.0
 Requires: typelib(SpiceClientGtk) = 3.0
+Requires: typelib(GtkSource)
 Requires: spice-gtk
 # virt-manager works fine with either, so pull the latest bits so there's
 # no ambiguity.
