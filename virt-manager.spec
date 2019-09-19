@@ -22,6 +22,7 @@ Requires: python-gobject3
 Requires: python-ipaddr
 Requires: python-libvirt
 Requires: python-requests
+Requires: python-gi-cairo
 Requires: typelib(Gtk) = 3.0
 Requires: typelib(GtkVnc) = 2.0
 Requires: typelib(SpiceClientGtk) = 3.0
