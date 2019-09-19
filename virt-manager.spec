@@ -7,8 +7,8 @@
 %global __python %{__python3}
 
 Name: virt-manager
-Version: 2.1.0
-Release: 2
+Version:	2.2.1
+Release:	1
 %global verrel %{version}-%{release}
 Summary: Desktop tool for managing virtual machines via libvirt
 Group: Graphical desktop/GNOME
@@ -16,11 +16,6 @@ License: GPLv2+
 BuildArch: noarch
 URL: https://virt-manager.org/
 Source0: https://virt-manager.org/download/sources/%{name}/%{name}-%{version}.tar.gz
-
-# Fix --initrd-inject with f30 URLs (bz #1686464)
-Patch0001: 0001-initrdinject-Use-full-option-versions-for-cpio.patch
-Patch0002: 0002-initrdinject-Force-added-files-to-be-owned-as-root-b.patch
-
 
 Requires: virt-manager-common = %{verrel}
 Requires: python-gobject3
@@ -129,7 +124,6 @@ done
 %files common -f %{name}.lang
 %dir %{_datadir}/%{name}
 
-%{_datadir}/%{name}/virtcli
 %{_datadir}/%{name}/virtconv
 %{_datadir}/%{name}/virtinst
 
