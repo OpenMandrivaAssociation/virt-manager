@@ -8,7 +8,7 @@
 
 Name: virt-manager
 Version:	2.2.1
-Release:	1
+Release:	2
 %global verrel %{version}-%{release}
 Summary: Desktop tool for managing virtual machines via libvirt
 Group: Graphical desktop/GNOME
@@ -31,6 +31,7 @@ Requires: spice-gtk
 # virt-manager works fine with either, so pull the latest bits so there's
 # no ambiguity.
 Requires: typelib(Vte) >= 2.91
+Requires: typelib(libxml2)
 Requires: libvirt-utils
 BuildRequires: intltool
 BuildRequires: pkgconfig(python3)
