@@ -115,39 +115,24 @@ done
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1*
 %{_datadir}/%{name}/ui/*.ui
-%{_datadir}/%{name}/virt-manager
 %{_datadir}/%{name}/virtManager
-
 %{_datadir}/%{name}/icons
 %{_datadir}/icons/hicolor/*/apps/*
-
-%{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/glib-2.0/schemas/org.virt-manager.virt-manager.gschema.xml
+%{_datadir}/metainfo/%{name}.appdata.xml
 
 %files common -f %{name}.lang
 %dir %{_datadir}/%{name}
-
-%{_datadir}/%{name}/virtconv
 %{_datadir}/%{name}/virtinst
 
 %files -n virt-install
 %{_mandir}/man1/virt-install.1*
 %{_mandir}/man1/virt-clone.1*
-%{_mandir}/man1/virt-convert.1*
 %{_mandir}/man1/virt-xml.1*
-
-%{_datadir}/%{name}/virt-install
-%{_datadir}/%{name}/virt-clone
-%{_datadir}/%{name}/virt-convert
-%{_datadir}/%{name}/virt-xml
-
 %{_datadir}/bash-completion/completions/virt-install
 %{_datadir}/bash-completion/completions/virt-clone
-%{_datadir}/bash-completion/completions/virt-convert
 %{_datadir}/bash-completion/completions/virt-xml
-
 %{_bindir}/virt-install
 %{_bindir}/virt-clone
-%{_bindir}/virt-convert
 %{_bindir}/virt-xml
