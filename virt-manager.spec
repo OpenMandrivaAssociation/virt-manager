@@ -7,8 +7,8 @@
 %global __python %{__python3}
 
 Name: virt-manager
-Version:	2.2.1
-Release:	3
+Version:	3.2.0
+Release:	1
 %global verrel %{version}-%{release}
 Summary: Desktop tool for managing virtual machines via libvirt
 Group: Graphical desktop/GNOME
@@ -36,6 +36,7 @@ Requires: libvirt-utils
 BuildRequires: intltool
 BuildRequires: pkgconfig(python3)
 BuildRequires: pkgconfig(glib-2.0)
+BuildRequires: python-docutils
 
 %description
 Virtual Machine Manager provides a graphical tool for administering virtual
