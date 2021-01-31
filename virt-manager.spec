@@ -8,7 +8,7 @@
 
 Name: virt-manager
 Version:	3.2.0
-Release:	1
+Release:	2
 %global verrel %{version}-%{release}
 Summary: Desktop tool for managing virtual machines via libvirt
 Group: Graphical desktop/GNOME
@@ -33,8 +33,12 @@ Requires: spice-gtk
 Requires: typelib(Vte) >= 2.91
 Requires: typelib(libxml2)
 Requires: libvirt-utils
+# Dirty fix for bug https://issues.openmandriva.org/show_bug.cgi?id=2677
+Requires: %{_lib}virt-glib-gir1.0
+Requires: %{_lib}osinfo-gir1.0
+
 BuildRequires: intltool
-BuildRequires: pkgconfig(python3)
+BuildRequires: pkgconfig(python)
 BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: python-docutils
 
