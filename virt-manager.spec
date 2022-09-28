@@ -7,8 +7,8 @@
 %global __python %{__python3}
 
 Name: virt-manager
-Version:	3.2.0
-Release:	3
+Version:	4.1.0
+Release:	1
 %global verrel %{version}-%{release}
 Summary: Desktop tool for managing virtual machines via libvirt
 Group: Graphical desktop/GNOME
