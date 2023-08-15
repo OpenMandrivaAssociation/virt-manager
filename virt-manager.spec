@@ -8,7 +8,7 @@
 
 Name: virt-manager
 Version:	4.1.0
-Release:	2
+Release:	3
 %global verrel %{version}-%{release}
 Summary: Desktop tool for managing virtual machines via libvirt
 Group: Graphical desktop/GNOME
@@ -27,6 +27,9 @@ Requires: typelib(Gtk) = 3.0
 Requires: typelib(GtkVnc) = 2.0
 Requires: typelib(SpiceClientGtk) = 3.0
 Requires: typelib(GtkSource)
+Requires: %{_lib}gtksourceview-gir3.0
+Requires: %{_lib}gtksourceview-gir4
+Requires: %{_lib}vte-gir2.91
 Requires: spice-gtk
 # virt-manager works fine with either, so pull the latest bits so there's
 # no ambiguity.
@@ -36,6 +39,8 @@ Requires: libvirt-utils
 # Dirty fix for bug https://issues.openmandriva.org/show_bug.cgi?id=2677
 Requires: %{_lib}virt-glib-gir1.0
 Requires: %{_lib}osinfo-gir1.0
+Requires: osinfo-db
+Requires: qemu-audio-spice
 
 BuildRequires: intltool
 BuildRequires: pkgconfig(python)
