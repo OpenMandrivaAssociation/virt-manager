@@ -7,15 +7,15 @@
 %global __python %{__python3}
 
 Name: virt-manager
-Version:	4.1.0
-Release:	3
+Version:	5.0.0
+Release:	1
 %global verrel %{version}-%{release}
 Summary: Desktop tool for managing virtual machines via libvirt
 Group: Graphical desktop/GNOME
 License: GPLv2+
 BuildArch: noarch
 URL: https://virt-manager.org/
-Source0: https://virt-manager.org/download/sources/%{name}/%{name}-%{version}.tar.gz
+Source0: https://virt-manager.org/download/sources/%{name}/%{name}-%{version}.tar.xz
 
 Requires: virt-manager-common = %{verrel}
 Requires: python-gobject3
@@ -27,7 +27,6 @@ Requires: typelib(Gtk) = 3.0
 Requires: typelib(GtkVnc) = 2.0
 Requires: typelib(SpiceClientGtk) = 3.0
 Requires: typelib(GtkSource)
-Requires: %{_lib}gtksourceview-gir3.0
 Requires: %{_lib}gtksourceview-gir4
 Requires: %{_lib}vte-gir2.91
 Requires: spice-gtk
@@ -42,6 +41,7 @@ Requires: %{_lib}osinfo-gir1.0
 Requires: osinfo-db
 Requires: qemu-audio-spice
 
+BuildRequires: meson
 BuildRequires: intltool
 BuildRequires: pkgconfig(python)
 BuildRequires: pkgconfig(glib-2.0)
@@ -102,22 +102,17 @@ machine).
 %autopatch -p1
 
 %build
-./setup.py configure \
- --default-hvs "qemu,xen,lxc"
-./setup.py build
+	
+%meson \
+     -Ddefault-hvs="qemu,xen,lxc" \
+     -Dupdate-icon-cache=false \
+     -Dcompile-schemas=false \
+     -Dtests=disabled
+     
+%meson_build
 
 %install
-./setup.py \
-    --no-update-icon-cache --no-compile-schemas \
-    install -O1 --root=%{buildroot}
-%find_lang %{name}
-
-# Replace '#!/usr/bin/env python3' with '#!/usr/bin/python3'
-# The format is ideal for upstream, but not a distro. See:
-# https://fedoraproject.org/wiki/Features/SystemPythonExecutablesUseSystemPython
-for f in $(find %{buildroot} -type f -executable -print); do
-    sed -i "1 s|^#!/usr/bin/env python3|#!%{__python3}|" $f || :
-done
+%meson_install
 
 %files
 %doc README.md COPYING NEWS.md
