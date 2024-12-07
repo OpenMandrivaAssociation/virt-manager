@@ -114,6 +114,9 @@ machine).
 %install
 %meson_install
 
+	
+%find_lang %{name}
+
 %files
 %doc README.md COPYING NEWS.md
 %{_bindir}/%{name}
