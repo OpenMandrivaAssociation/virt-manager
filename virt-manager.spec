@@ -8,7 +8,7 @@
 
 Name: virt-manager
 Version:	5.0.0
-Release:	1
+Release:	2
 %global verrel %{version}-%{release}
 Summary: Desktop tool for managing virtual machines via libvirt
 Group: Graphical desktop/GNOME
